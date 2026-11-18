@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Admin Login{% endblock %}{% block auth_content %}
+<div class="login"><h1>CampusDesk Login</h1><p>Sign in to manage students, classes, subjects and attendance.</p>
+{% with msgs=get_flashed_messages(with_categories=true) %}{% for cat,msg in msgs %}<div class="flash {{cat}}">{{msg}}</div>{% endfor %}{% endwith %}
+<form method="post"><label>Username</label><input name="username" required><label>Password</label><input type="password" name="password" required><button>Login</button></form><p class="hint">Demo login: admin / admin123</p></div>{% endblock %}

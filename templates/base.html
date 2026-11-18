@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}CampusDesk{% endblock %}</title><link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"></head><body>
+{% if session.get('admin_id') %}<div class="layout"><aside class="sidebar"><h2>CampusDesk</h2>
+<a href="{{url_for('dashboard')}}">Dashboard</a><a href="{{url_for('students')}}">Students</a><a href="{{url_for('classes')}}">Classes</a><a href="{{url_for('subjects')}}">Subjects</a><a href="{{url_for('class_attendance')}}">Class Attendance</a><a href="{{url_for('class_marks')}}">Class Marks</a><a href="{{url_for('logout')}}">Sign out</a></aside>
+<main class="main"><header>Student Management System <span>Admin: {{session.get('username')}}</span></header><section class="content">
+{% with msgs=get_flashed_messages(with_categories=true) %}{% for cat,msg in msgs %}<div class="flash {{cat}}">{{msg}}</div>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}</section></main></div>
+{% else %}{% block auth_content %}{% endblock %}{% endif %}</body></html>
